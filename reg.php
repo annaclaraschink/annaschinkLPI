@@ -1,3 +1,26 @@
+<?php
+include 'conexao.php';
+if(isset($_POST['SUB'])){
+    $nome = $_POST['nome'];
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+    $cidade = $_POST['cidade'];
+    $idade = $_POST['idade'];
+
+    if($_FILES['f1']['name']){
+        move_uploaded_file($_FILES['f1']['tmp_name'],"imagem/".$_FILES['f1']['name']);
+        $img = "imagem/".$FILES['f1']['name'];
+
+    }
+  $i = "insert into reg(usuario,senha, cidade, imagem, nome, idade)
+  value('$usuario', '$senha', '$cidade', '$img', '$nome', '$idade')";
+  mysqli_query($con, $i);
+}
+
+?>
+
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -15,29 +38,29 @@
                 <tr>
                     <td>
                         Username
-                        <input type="text" name="user">
+                        <input type="text" name="usuário">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        password
-                        <input type="password" name="pass">
+                        Senha
+                        <input type="Senha" name="senha">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        city
-                        <select name="city">
+                        Cidade
+                        <select name="cidade">
                             <option value="">-select-</option>
-                            <option value="knp">kanpur</option>
-                            <option value="lko">lucknow</option>
+                            <option value="Hortolandia">Hortolândia</option>
+                            <option value="Campinas">Campinas</option>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Gender
-                        <input type="radio"name="gen" id="gen" value="male">male
-                        <input type="radio" name="gen" id="gen" value="female">female
+                        Idade
+                        <input type="int"name="idade">
+                       
                     </td>
                 </tr>
                 <tr>
